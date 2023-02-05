@@ -17,7 +17,7 @@ export default function Header() {
             <img
               src={`/logo.png`}
               alt="Thirdweb Logo"
-              width={135}
+              width={400}
               style={{ cursor: "pointer" }}
             />
           </Link>

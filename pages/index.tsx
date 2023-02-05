@@ -19,21 +19,9 @@ const Home: NextPage = () => {
       {/* Content */}
       <div className={styles.container}>
         {/* Top Section */}
-        <h1 className={styles.h1}>NFT Marketplace w/ thirdweb + Next.JS</h1>
+        <h1 className={styles.h1}>Unchained Wolfs Marketplace</h1>
         <p className={styles.explain}>
-          Build an NFT marketplace using{" "}
-          <b>
-            {" "}
-            <a
-              href="https://thirdweb.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.purple}
-            >
-              thirdweb
-            </a>
-          </b>{" "}
-          to list your ERC721 and ERC1155 tokens for auction or for direct sale.
+          List your ERC721 and ERC1155 tokens for auction or for direct sale.
         </p>
 
         <hr className={styles.divider} />
@@ -63,8 +51,8 @@ const Home: NextPage = () => {
                       style={{
                         borderRadius: 16,
                         // Fit the image to the container
-                        width: "100%",
-                        height: "100%",
+                        width: "20%",
+                        height: "20%",
                       }}
                     />
                     <h2 className={styles.nameContainer}>

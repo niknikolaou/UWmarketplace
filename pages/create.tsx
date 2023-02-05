@@ -2,6 +2,7 @@ import {
   useContract,
   useNetwork,
   useNetworkMismatch,
+  useContractMetadata
 } from "@thirdweb-dev/react";
 import {
   ChainId,
@@ -10,14 +11,21 @@ import {
 } from "@thirdweb-dev/sdk";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
+
 import { marketplaceContractAddress } from "../addresses";
 import styles from "../styles/Home.module.css";
+
+const myEditionDropContractAddress =
+  "0x9C269b1c961396A775F264EE4Daf1F6534f77231";
 
 const Create: NextPage = () => {
   // Next JS Router hook to redirect to other pages
   const router = useRouter();
   const networkMismatch = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
+  const { contract: editionDrop } = useContract(myEditionDropContractAddress);
+
+  const { data: contractMetadata } = useContractMetadata(editionDrop);
 
   // Connect to our marketplace contract via the useContract hook
   const { contract: marketplace } = useContract(marketplaceContractAddress, "marketplace");
@@ -154,6 +162,9 @@ const Create: NextPage = () => {
             name="contractAddress"
             className={styles.textInput}
             placeholder="NFT Contract Address"
+            value={myEditionDropContractAddress}
+            readOnly
+            style={{ display: "none" }}
           />
 
           {/* NFT Token ID Field */}
@@ -162,8 +173,15 @@ const Create: NextPage = () => {
             name="tokenId"
             className={styles.textInput}
             placeholder="NFT Token ID"
+            value={0}
+            readOnly
+            style={{ display: "none" }}
           />
-
+          <img
+                        height={100}
+                src={contractMetadata?.image}
+                alt={`${contractMetadata?.name} preview image`}
+              />
           {/* Sale Price For Listing Field */}
           <input
             type="text"
@@ -171,7 +189,6 @@ const Create: NextPage = () => {
             className={styles.textInput}
             placeholder="Sale Price"
           />
-
           <button
             type="submit"
             className={styles.mainButton}

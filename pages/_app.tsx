@@ -1,32 +1,37 @@
 import type { AppProps } from "next/app";
+import { K2D } from "@next/font/google"
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import "../styles/globals.css";
 import Head from "next/head";
 import ThirdwebGuideFooter from "../components/ThirdwebGuideFooter";
 import Header from "../components/Header";
 
-// This is the chainId your dApp will work on.
-const activeChainId = ChainId.Goerli;
+
+const k2d = K2D({subsets:['latin'], weight:'500'});
+// This is the chainId your dApp will work o
+const activeChainId = ChainId.Mumbai;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <main className={k2d.className}>
     <ThirdwebProvider desiredChainId={activeChainId}>
       <Head>
-        <title>thirdweb Marketplace with Next.JS</title>
+        <title>Unchained Marketplace</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="Learn How To Use Thirdweb's Marketplace with Next.JS To List Your NFTs For Sale, Accept Bids, and Buy NFTs"
+          content="NFT WOLF Marketplace"
         />
         <meta
           name="keywords"
-          content="Thirdweb, Marketplace, NFT Marketplace Tutorial, NFT Auction Tutorial, How To Make OpenSea"
+          content="Unchained Wolfs, Marketplace, NFT Marketplace"
         />
       </Head>
       <Header />
       <Component {...pageProps} />
       <ThirdwebGuideFooter />
     </ThirdwebProvider>
+    </main>
   );
 }
 
