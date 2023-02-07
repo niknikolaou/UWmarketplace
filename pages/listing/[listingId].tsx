@@ -143,7 +143,7 @@ const ListingPage: NextPage = () => {
             <b>
               {listing.sellerAddress?.slice(0, 6) +
                 "..." +
-                listing.sellerAddress?.slice(36, 40)}
+                listing.sellerAddress?.slice(38, 42)}
             </b>
           </p>
 
@@ -167,7 +167,7 @@ const ListingPage: NextPage = () => {
             >
               Buy
             </button>
-            <p style={{ color: "grey" }}>|</p>
+            <p style={{ color: "grey" }}> <br/></p>
             <div
               style={{
                 display: "flex",
@@ -176,7 +176,7 @@ const ListingPage: NextPage = () => {
                 gap: 8,
               }}
             >
-              <input
+             {/* <input
                 type="text"
                 name="bidAmount"
                 className={styles.textInput}
@@ -194,15 +194,16 @@ const ListingPage: NextPage = () => {
                 }}
               >
                 Make Offer
-              </button>
-            </div>
-          </div>
-          <button
+              </button>*/} 
+              <button
               style={{ borderStyle: "none" }}
               className={styles.mainButton}
               onClick={cancelListing}>
               Cancel Listing
             </button>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>

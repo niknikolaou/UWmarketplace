@@ -145,7 +145,7 @@ const Create: NextPage = () => {
             <label htmlFor="directListing" className={styles.listingTypeLabel}>
               Direct Listing
             </label>
-            <input
+          {/*    <input
               type="radio"
               name="listingType"
               id="auctionListing"
@@ -154,7 +154,7 @@ const Create: NextPage = () => {
             />
             <label htmlFor="auctionListing" className={styles.listingTypeLabel}>
               Auction Listing
-            </label>
+            </label>*/}
           </div>
 
           {/* NFT Contract Address Field */}
