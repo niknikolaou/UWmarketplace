@@ -17,6 +17,7 @@ import styles from "../styles/Home.module.css";
 
 const myEditionDropContractAddress =
   "0x9C269b1c961396A775F264EE4Daf1F6534f77231";
+  const activeChainId = ChainId.Mumbai;
 
 const Create: NextPage = () => {
   // Next JS Router hook to redirect to other pages
@@ -35,7 +36,7 @@ const Create: NextPage = () => {
     try {
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork && switchNetwork(ChainId.Goerli);
+        switchNetwork && switchNetwork(activeChainId);
         return;
       }
 

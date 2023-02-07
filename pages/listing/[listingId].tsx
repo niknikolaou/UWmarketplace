@@ -4,6 +4,7 @@ import {
   useNetworkMismatch,
   useListing,
   useContract,
+  useContractWrite
 } from "@thirdweb-dev/react";
 import {
   ChainId,
@@ -16,6 +17,11 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { marketplaceContractAddress } from "../../addresses";
 import styles from "../../styles/Home.module.css";
+
+const activeChainId = ChainId.Mumbai;
+
+
+
 
 const ListingPage: NextPage = () => {
   // Next JS Router hook to redirect to other pages and to grab the query from the URL (listingId)
@@ -32,6 +38,8 @@ const ListingPage: NextPage = () => {
 
   // Initialize the marketplace contract
   const { contract: marketplace } = useContract(marketplaceContractAddress, "marketplace");
+  const { contract:extraFunctions } = useContract("0x6b7F74BE8de57747F448A735e20A9025eBF71BC2");
+  const { mutateAsync: cancelDirectListing, isLoading } = useContractWrite(extraFunctions, "cancelDirectListing")
 
   // Fetch the listing from the marketplace contract
   const { data: listing, isLoading: loadingListing } = useListing(
@@ -54,7 +62,7 @@ const ListingPage: NextPage = () => {
     try {
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork && switchNetwork(ChainId.Goerli);
+        switchNetwork && switchNetwork(activeChainId);
         return;
       }
 
@@ -63,7 +71,7 @@ const ListingPage: NextPage = () => {
         await marketplace?.direct.makeOffer(
           listingId, // The listingId of the listing we want to make an offer for
           1, // Quantity = 1
-          NATIVE_TOKENS[ChainId.Goerli].wrapped.address, // Wrapped Ether address on Goerli
+          NATIVE_TOKENS[activeChainId].wrapped.address, // Wrapped Ether address on Goerli
           bidAmount // The offer amount the user entered
         );
       }
@@ -88,7 +96,7 @@ const ListingPage: NextPage = () => {
     try {
       // Ensure user is on the correct network
       if (networkMismatch) {
-        switchNetwork && switchNetwork(ChainId.Goerli);
+        switchNetwork && switchNetwork(activeChainId);
         return;
       }
 
@@ -98,6 +106,23 @@ const ListingPage: NextPage = () => {
     } catch (error) {
       console.error(error);
       alert(error);
+    }
+  }
+
+  async function cancelListing() {
+    try {
+      // Ensure user is on the correct network
+      if (networkMismatch) {
+        switchNetwork && switchNetwork(activeChainId);
+        return;
+      }
+
+      // Simple one-liner for buying the NFT
+      await cancelDirectListing([listingId]);
+      alert("NFT Cancel listing successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Only the owner of the NFT can cancel Listing!");
     }
   }
 
@@ -172,6 +197,12 @@ const ListingPage: NextPage = () => {
               </button>
             </div>
           </div>
+          <button
+              style={{ borderStyle: "none" }}
+              className={styles.mainButton}
+              onClick={cancelListing}>
+              Cancel Listing
+            </button>
         </div>
       </div>
     </div>
