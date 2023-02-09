@@ -4,6 +4,18 @@
   left: 5%;
 }
 
+.hoverablelink {
+  text-decoration: underline;
+  color: #b48339;
+  transition: all 0.1s ease-in-out;
+  padding-right: 5px;
+}
+
+.hoverablelink:hover {
+  color: #418dff;
+}
+
+
 .btn {
   background-color: var(--tw-color1);
   outline: none;
@@ -136,12 +148,14 @@
   height: 3rem;
   min-width: 3rem;
   font-size: 1rem;
-  background: #e5e5ea;
-  background-image: linear-gradient(to left, #cc25b3 0%, #418dff 101.52%);
-  color: #fff;
+  background: #474647;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #c2b49c;
   width: 180px;
   text-align: center;
-  border-radius: 9999px;
+  border-radius: 10px;
+  border: 1px solid #b48339;
 }
 
 .mainButton:hover {
@@ -298,7 +312,7 @@
   border: 3px solid transparent;
   border-radius: 20px;
   background: linear-gradient(to right, #262936, #262936),
-    linear-gradient(to right, #418dff, #cc25b3);
+    linear-gradient(to right, #418dff, #a8a3a7);
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
 }
@@ -369,4 +383,6 @@
     width: 100%;
     align-items: center;
   }
+
+  
 }

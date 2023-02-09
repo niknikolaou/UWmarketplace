@@ -23,6 +23,19 @@ const Home: NextPage = () => {
         <p className={styles.explain}>
           List your ERC721 and ERC1155 tokens for auction or for direct sale.
         </p>
+        <p>
+                <a href="https://2dwolf.space" className={styles.hoverablelink}>
+                  Game
+                </a>
+                <span> | </span>
+                <a href="https://mint.2dwolf.space" className={styles.hoverablelink}>
+                  Mint NFT
+                </a>
+                <span> | </span>
+                <a href="https://scores.2dwolf.space" className={styles.hoverablelink}>
+                  Scores
+                </a>
+              </p>
 
         <hr className={styles.divider} />
 
