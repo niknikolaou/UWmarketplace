@@ -16,7 +16,7 @@ import { marketplaceContractAddress } from "../addresses";
 import styles from "../styles/Home.module.css";
 
 const myEditionDropContractAddress =
-  "0x9C269b1c961396A775F264EE4Daf1F6534f77231";
+  "0xC53674371dCF59abc151df13107C3071b8D91f10";
   const activeChainId = ChainId.Polygon;
 
 const Create: NextPage = () => {
