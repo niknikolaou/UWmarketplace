@@ -9,7 +9,7 @@ import Header from "../components/Header";
 
 const k2d = K2D({subsets:['latin'], weight:'500'});
 // This is the chainId your dApp will work o
-const activeChainId = ChainId.Mumbai;
+const activeChainId = ChainId.Polygon;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
